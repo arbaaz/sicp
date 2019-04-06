@@ -40,20 +40,6 @@
   (edges->dot edges)
   (princ "}"))
 
-
-(defun dot->png (fname thunk)
-  (with-open-file (*standard-output*
-                    fname
-                    :direction :output
-                    :if-exists :supersede)
-    (funcall thunk))
-  (ext:shell (concatenate 'string "dot -Tpng -O " fname)))
-
-(defun graph->png (fname nodes edges)
-  (dot->png fname
-            (lambda ()
-              (graph->dot nodes edges))))
-
 (defun uedges->dot (edges)
   (maplist (lambda (lst)
              (mapc (lambda (edge)
@@ -74,9 +60,23 @@
   (uedges->dot edges)
   (princ "}"))
 
+(defun graph->png (fname nodes edges)
+  (dot->png fname
+            (lambda ()
+              (graph->dot nodes edges))))
+
+(defun dot->png (fname thunk)
+  (with-open-file (*standard-output*
+                    fname
+                    :direction :output
+                    :if-exists :supersede)
+    (funcall thunk))
+  (ext:shell (concatenate 'string "dot -Tpng -O " fname)))
+
 (defun ugraph->png (fname nodes edges)
- (dot->png fname
- (lambda ()
- (ugraph->dot nodes edges))))
+  (dot->png fname
+            (lambda ()
+              (ugraph->dot nodes edges))))
+
 
 

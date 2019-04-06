@@ -27,6 +27,7 @@
 (mapcar #'sqrt '(1 2 3 4 5))
 (mapcar #'car '((foo bar) (baz qux)))
 (mapcar #'cdr '((foo bar) (baz qux)))
+(mapcar #'cadr '((foo bar) (baz qux)))
 (append '(mary had) '(a) '(little lamb))
 (apply #'append '((THERE IS A DOOR GOING WEST FROM HERE.)
                   (THERE IS A LADDER GOING UPSTAIRS FROM HERE.)))
