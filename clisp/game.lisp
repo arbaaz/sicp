@@ -168,4 +168,4 @@
                                (garden (living-room east door))
                                (attic (living-room downstairs ladder))))
 
-(ugraph->png "uwizard.dot" *wizard-nodes* *wizard-edges*)
+;(ugraph->png "uwizard.dot" *wizard-nodes* *wizard-edges*)
